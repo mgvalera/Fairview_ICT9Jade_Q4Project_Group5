@@ -1,0 +1,226 @@
+<!-- Credits/Sources
+Urbanist Font: https://fonts.google.com/specimen/Urbanist?query=urbanist 
+BoxIcons: Icons obtained from Google ("https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css)
+BG Images: https://obmontessori.edu.ph/fairview
+Javascript from Sir Santos
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <title>Q4 Project: Login</title>
+
+    <style>
+
+        @font-face {
+            font-family: 'HarryPotter';
+            src: url(HPFont.TTF);
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Urbanist';
+        }
+
+        /* ✅ FIXED BODY */
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column; /* vertical layout */
+            margin: 0;
+            background-image: url(BG1.png);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        /* ✅ FIXED CONTAINER */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1; /* takes remaining space */
+        }
+
+        form {
+            width: 350px;
+            height: 520px;
+            border-radius: 15px;
+            background-color: rgba(0,0,0,0.55);
+            box-shadow: 2px 2px 2px rgba(0,0,0,0.32);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .header {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        .header h1 {
+            font-family: 'HarryPotter';
+        }
+
+        .header img {
+            width: 70px;
+        }
+
+        .header h1,
+        .header p {
+            margin: 4px 0;
+        }
+
+        .header p {
+            font-size: 15px;
+            line-height: 18px;
+        }
+
+        .inputs {
+            padding: 25px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            color: white;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 10px;
+            background-color: transparent;
+            border: 1.3px solid rgb(165, 165, 165);
+            box-shadow: 1px 1px 1px rgba(0,0,0,0.41);
+            outline: none;
+        }
+
+        .checkb {
+            margin: -10px 0 10px 0;
+            text-align: left;
+            padding-left: 25px;
+        }
+
+        #display {
+            color: white;
+            font-size: 12px;
+            min-height: 16px;
+            margin-bottom: 10px;
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 0 25px 20px 25px;
+        }
+
+        .footer button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            color: white;
+            background: linear-gradient(#e0b422, #c98114);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.484);
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .footer button:disabled {
+            background: linear-gradient(#7f640c, #5c3a08);
+            cursor: not-allowed;
+        }
+
+        /* ✅ NEW FOOTER */
+        footer {
+            width: 100%;
+            height: 45px;
+            background-color: rgba(0, 0, 0, 0.55);
+            font-size: 14px;
+            color: white;
+            text-align: center;
+            margin-top: auto; /* pushes to bottom */
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <form>
+            <div class="header">
+                <img src="Hogwarts Logo.png" alt="" id="logoimg">
+                <h1>Welcome to Hogwarts!</h1>
+                <p>Step into the wizarding world! Enter your<br>credentials to begin your magical journey.</p>
+            </div>
+
+            <div class="inputs">
+                <label for="username">Username</label><br>
+                <input type="text" id="username" placeholder="Student1" required><br>
+
+                <label for="password">Password</label><br>
+                <input type="password" id="password" placeholder="Takis" required>
+            </div>
+
+            <div class="checkb">
+                <input type="checkbox" id="checkboxID" onclick="checkBox()">
+                <label for="checkboxID">Stay logged in</label>
+            </div>
+
+            <p id="display"></p>
+
+            <div class="footer">
+                <button type="button" id="loginBTN" onclick="authenticate()">Log In</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- ✅ ADDED FOOTER -->
+    <footer>
+        <p>David, Rioflorido, Valera, Valerio | Group 5, 9-Jade © 2026</p>
+    </footer>
+
+    <script>
+        let attempt_counter = 0;
+
+        function authenticate() {
+
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            let granted = "Welcome " + username + "!";
+            let denied = "Access denied. Account locked after 3 attempts!";
+
+            do {
+                if (username === "Student1" && password === "Takis") {
+                    alert(granted);
+                    attempt_counter = 0;
+                    document.getElementById("display").innerHTML = "";
+                    window.location.href = "notebooks.html";
+                    break;
+                } else {
+                    attempt_counter++;
+                    document.getElementById("display").innerHTML =
+                        "Incorrect username and/or password. Attempt " + attempt_counter + " of 3 ";
+                }
+
+            } while (false);
+
+            if (attempt_counter >= 3) {
+                alert(denied);
+                document.getElementById("loginBTN").disabled = true;
+            }
+        }
+    </script>
+
+</body>
+</html>
