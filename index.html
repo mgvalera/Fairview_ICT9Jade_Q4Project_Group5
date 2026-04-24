@@ -41,12 +41,11 @@ Javascript from Sir Santos
             background-repeat: no-repeat;
         }
 
-        /* ✅ FIXED CONTAINER */
         .container {
             display: flex;
             justify-content: center;
             align-items: center;
-            flex: 1; /* takes remaining space */
+            flex: 1; 
         }
 
         form {
@@ -54,13 +53,18 @@ Javascript from Sir Santos
             height: 520px;
             border-radius: 15px;
             background-color: rgba(0,0,0,0.55);
-            box-shadow: 2px 2px 2px rgba(0,0,0,0.32);
+            -webkit-box-shadow: 1px 1px 3px 3px rgba(255, 174, 61, 0.112); 
+            box-shadow: 1px 1px 3px 3px rgba(244, 160, 43, 0.152);
             color: white;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: transform 0.4s ease;
         }
 
+        form:hover {
+            transform: translateY(-4px);
+        }
         .header {
             text-align: center;
             padding-top: 20px;
@@ -99,6 +103,9 @@ Javascript from Sir Santos
             border: 1.3px solid rgb(165, 165, 165);
             box-shadow: 1px 1px 1px rgba(0,0,0,0.41);
             outline: none;
+        }
+        ::placeholder {
+            color: rgba(255, 255, 255, 0.618);
         }
 
         .checkb {
@@ -166,10 +173,10 @@ Javascript from Sir Santos
 
             <div class="inputs">
                 <label for="username">Username</label><br>
-                <input type="text" id="username" placeholder="Student1" required><br>
+                <input type="text" id="username" placeholder="HarryPotter" required><br>
 
                 <label for="password">Password</label><br>
-                <input type="password" id="password" placeholder="Takis" required>
+                <input type="password" id="password" placeholder="Dobby12" required>
             </div>
 
             <div class="checkb">
@@ -201,7 +208,7 @@ Javascript from Sir Santos
             let denied = "Access denied. Account locked after 3 attempts!";
 
             do {
-                if (username === "Student1" && password === "Takis") {
+                if (username === "HarryPotter" && password === "Dobby12") {
                     alert(granted);
                     attempt_counter = 0;
                     document.getElementById("display").innerHTML = "";
