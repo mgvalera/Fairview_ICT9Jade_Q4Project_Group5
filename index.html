@@ -196,13 +196,19 @@ Javascript from Sir Santos
         <p>David, Rioflorido, Valera, Valerio | Group 5, 9-Jade © 2026</p>
     </footer>
 
-    <script>
+<script>
+    // Javascript Format by Mr. Santos
         let attempt_counter = 0;
 
         function authenticate() {
 
             let username = document.getElementById("username").value;
             let password = document.getElementById("password").value;
+
+            if (username === "" || password === "") {
+                alert("No username and/or password. Please input something!");
+                return;
+            }
 
             let granted = "Welcome " + username + "!";
             let denied = "Access denied. Account locked after 3 attempts!";
