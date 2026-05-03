@@ -1,11 +1,23 @@
+<!-- Credits & Sources (for all pages)
+Harry Potter Font: https://www.dafont.com/harry-p.font
+Urbanist Font: https://fonts.google.com/specimen/Urbanist?preview.script=Latn
+Hogwarts PNG: https://commons.wikimedia.org/wiki/File:Hogwarts-Crest.png
+Javascript of index.html: By Mr. Santos
+Webkit Shadows: https://html-css-js.com/css/generator/box-shadow/
+Profile Pic Code: Obtained from 3Q Skills Test
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Q4 Project: Tasks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="Hogwarts Logo.png" type="image/png">
 
-        <style>
+    <title>Hogwarts Tasks</title>
+
+    <style>
         @font-face {
             font-family: 'HarryPotter';
             src: url(HPFont.TTF);
@@ -19,11 +31,14 @@
         }
 
         body {
-            display: flex;
             min-height: 100vh;
-            background: url('Classroom.png') no-repeat center/cover;
+            display: flex;
+            background-image: url('Classroom.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
         }
-
 
         .container {
             display: flex;
@@ -38,29 +53,24 @@
             flex-direction: column;
             padding: 30px 20px;
             color: white;
-            z-index: 10;
         }
 
         .sidebar-header {
             text-align: center;
             margin-bottom: 40px;
-            src: url(HPFont.TTF);
         }
 
         .sidebar-header img {
-            width: 145px; 
+            width: 145px;
             filter: drop-shadow(0 0 5px rgba(224, 180, 34, 0.5));
-        }
-
-        .sidebar-header h2 {
-            font-family: 'HarryPotter', serif;
-            font-size: 22px;
-            margin-top: 10px;
-            color: #e0b422;
         }
 
         .nav-links {
             list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
         }
 
         .nav-links li {
@@ -68,178 +78,211 @@
             margin-bottom: 8px;
             border-radius: 10px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
             transition: 0.3s;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.75);
         }
 
-        .nav-links li i {
-            margin-right: 10px;
-            font-size: 20px;
-        }
-
-        .nav-links li:hover, .nav-links li.active {
+        .nav-links li:hover,
+        .nav-links li.active {
             background: rgba(224, 180, 34, 0.15);
             color: #e0b422;
         }
 
         .main-content {
+            background: rgba(0, 0, 0, 0.55);
             flex: 1;
-            padding: 40px;
+            min-height: 100vh;
             overflow-y: auto;
+            padding: 50px;
+            padding-bottom: 90px;
+            display: flex;
+            flex-direction: column;
         }
 
+        .wrapper {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+        }
 
-        .card-wrapper {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .badge {
+            background: linear-gradient(#e0b422, #c98114);
+            color: white;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 15px;
+            font-weight: 800;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            font-family: 'HarryPotter';
+            color: white;
+        }
+
+        h2 {
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        .cards {
+            display: flex;
             gap: 25px;
+            flex-wrap: wrap;
         }
 
-
-        .notebook-card {
+        .task-card {
             padding: 20px;
             border-radius: 15px;
             background: rgba(0,0,0,0.7);
+            -webkit-box-shadow: 1px 1px 3px 3px rgba(255, 174, 61, 0.112);
+            box-shadow: 1px 1px 3px 3px rgba(244, 160, 43, 0.152);
             border: 1px solid rgba(224,180,34,0.3);
             color: white;
-            transition: 0.3s;
+            transition: 0.3s ease;
             cursor: pointer;
+            flex: 1;
+            min-width: 320px;
+            min-height: 350px;
         }
 
-        .notebook-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            background-color: #a27b2dca;
+        .task-card:hover {
+            transform: translateY(-8px);
+            border-color: #efc848;
         }
-
 
         h3 {
+            font-size: 22px;
             font-family: 'HarryPotter';
             color: #f5efdc;
         }
 
         p {
-            color: #f5efdc;
-            font-family: 'Urbanist';
-            color: rgb(245, 239, 220);  
-    
+            color: rgb(245, 239, 220);
         }
 
-
-        .footer {
-            position: fixed;
-            bottom: 0;
-            left: 250px;
-            width: calc(100% - 250px);
-            background: rgba(0,0,0,0.6);
-            text-align: center;
-            padding: 10px;
-            color: white;
-            font-size: 12px;
+        .desc {
+            margin-top: 10px;
+            margin-bottom: 100px;
         }
 
         button {
             background: linear-gradient(#e0b422, #c98114);
             color: white;
-            display: inline-block;
             padding: 5px 20px;
             border-radius: 15px;
             font-weight: 800;
             font-size: 12px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-
+            margin-top: 10px;
         }
 
-         h1 {
-           font-size: 5rem;
-            font-weight: 800;
-            font-family: 'HarryPotter';
+        button:hover {
+            cursor: pointer;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 260px;
+            right: 0;
+            padding: 18px;
+            text-align: center;
             color: white;
+            font-size: 12px;
+            letter-spacing: 1px;
+            background-color: rgba(0, 0, 0, 0.88);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
         }
-        
-        </style>
-
-        
+    </style>
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-        <div class="container">
         <aside class="sidebar">
             <div class="sidebar-header">
-                <img src="https://raw.githubusercontent.com/mgvalera/Fairview_ICT9Jade_Q4Project_Group5/main/Hogwarts%20Logo.png" alt="Hogwarts Logo">
+                <img src="https://raw.githubusercontent.com/mgvalera/Fairview_ICT9Jade_Q4Project_Group5/main/Hogwarts%20Logo.png">
             </div>
+
             <nav>
                 <ul class="nav-links">
-                    <li class="active"><i class='bx bxs-dashboard'></i> Dashboard</li>
-                    <li><i class='bx bxs-book-bookmark'></i> Notebooks</li>
-                    <li><i class='bx bx-list-check'></i> Tasks</li>
-                    <li><i class='bx bxs-user-badge'></i> Profile</li>
-                    <li><i class='bx bxs-log-out'></i> Logout</li>
+                    <a href="dashboard.html"><li>Dashboard</li></a>
+                    <a href="notebooks.html"><li>Notebooks</li></a>
+                    <a href="tasks.html"><li class="active">Tasks</li></a>
+                    <a href="profile.html"><li>Profile</li></a>
+                    <a href="index.html"><li>Logout</li></a>
                 </ul>
             </nav>
         </aside>
-        
-    <div class="main-content">
-        <div class="card-wrapper">
 
-            <div class="main-content">
-        <h1 id="header">Quests</h1>
-        <br>
+        <div class="main-content">
 
-            <div class="notebook-card">
-                <h3> 🪄 CHARMS </h3>
-                <p>Task: Cast Wingardium Leviosa correctly </p>
-                <p>Due: Wednesday, 4:00 PM </p>
-                <p>Professor: Filius Flitwick</p>
-                <button>start task</button>
+            <div class="wrapper">
+
+                <div class="header">
+                    <span class="badge">Hogwarts Tasks</span>
+                    <h1>Magical Tasks</h1>
+                    <h2>Awaiting Magical Tasks</h2>
+                </div>
+
+                <div class="cards">
+
+                    <div class="task-card">
+                        <h3>🪄 CHARMS</h3>
+                        <p class="desc">Master the art of levitation by perfecting your swish and flick technique.</p>
+                        <p>Task: Cast Wingardium Leviosa correctly</p>
+                        <p>Due: Wednesday, 4:00 PM</p>
+                        <p>Professor: Filius Flitwick</p>
+                        <button onclick="showAlert()">start task</button>
+                    </div>
+
+                    <div class="task-card">
+                        <h3>🦄 CARE OF MAGICAL CREATURES</h3>
+                        <p class="desc">Get hands-on with unique hybrids and observe their behavior carefully.</p>
+                        <p>Task: Study Blast-Ended Skrewts</p>
+                        <p>Due: Thursday, 11:59 PM</p>
+                        <p>Professor: Rubeus Hagrid</p>
+                        <button onclick="showAlert()">start task</button>
+                    </div>
+
+                    <div class="task-card">
+                        <h3>🧹 FLYING</h3>
+                        <p class="desc">Practice broom control with steady ascent and smooth landing.</p>
+                        <p>Task: Take-off and landing drills</p>
+                        <p>Due: Thursday, 8:00 AM</p>
+                        <p>Professor: Rolanda Hooch</p>
+                        <button onclick="showAlert()">start task</button>
+                    </div>
+
+                </div>
+
             </div>
-
-            <div class="notebook-card">
-                <h3> 🧪 POTIONS </h3>
-                <p>Task: Brew a Cure for Boils</p>
-                <p>Due: Friday, 11:00 AM </p>
-                <p>Professor: Severus Snape</p>
-                <button>start task</button>
-            </div>
-
-            <div class="notebook-card">
-                <h3> 🦄 CARE OF MAGICAL CREATURES </h3>
-                <p>Task: Study Blast-Ended Skrewts (good luck 😭) </p>
-                <p>Due: Thursday, 11:59 PM </p>
-                <p>Professor: Rubeus Hagrid</p>
-                <button>start task</button>
-            </div>
-
-            <div class="notebook-card">
-               <h3> 🧹 FLYING</h3>
-                <p>Task: Take-off and landing drills </p>
-                <p>Due: Thursday, 8:00 AM </p>
-                <p>Professor: Rolanda Hooch</p>
-                <button>start task</button>
-            </div>
-
-            <div class="notebook-card">
-               <h3> 🌌 ASTRONOMY </h3>
-                <p>Task: Chart constellations </p>
-                <p>Due: Sunday, 12:00 PM </p>
-                <p>Professor: Aurora Sinistra</p>
-                <button>start task</button>
-            </div>
-         
 
         </div>
+
     </div>
 
-</div>
+    <div class="footer">
+        David, Rioflorido, Valera, Valerio | Group 5, 9-Jade © 2026
+    </div>
 
-<div class="footer">
-    David, Rioflorido, Valera, Valerio | Group 5, 9-Jade © 2026
-</div>
+    <script>
+        function showAlert() {
+            alert("This task is currently unavailable.. try checking the Ministry’s notice board later. 🧙‍♂️");
+        }
+    </script>
 
 </body>
 </html>

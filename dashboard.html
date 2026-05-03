@@ -7,12 +7,13 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="icon" href="Hogwarts Logo.png" type="image/png">
 
     <style>
         @font-face {
             font-family: 'HarryPotter';
-            src: url(HPFont.TTF); 
-    }
+            src: url(HPFont.TTF);
+        }
 
         * {
             box-sizing: border-box;
@@ -25,11 +26,11 @@
             height: 100vh;
             display: flex;
             background-color: #121212;
-            background-image: url('BG1.png'); 
+            background-image: url('BG1.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            overflow: hidden; 
+            overflow: hidden;
         }
 
         .container {
@@ -38,7 +39,6 @@
             height: 100vh;
         }
 
-    
         .sidebar {
             width: 260px;
             background-color: rgba(0, 0, 0, 0.9);
@@ -56,7 +56,7 @@
         }
 
         .sidebar-header img {
-            width: 145px; 
+            width: 145px;
             filter: drop-shadow(0 0 5px rgba(224, 180, 34, 0.5));
         }
 
@@ -87,30 +87,29 @@
             font-size: 20px;
         }
 
-        .nav-links li:hover, .nav-links li.active {
+        .nav-links li:hover,
+        .nav-links li.active {
             background: rgba(224, 180, 34, 0.15);
             color: #e0b422;
         }
 
-    
         .main-content {
             flex: 1;
             height: 100vh;
             overflow-y: auto;
-            background: rgba(0, 0, 0, 0.5); 
+            background: rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
-            align-items: center; 
+            align-items: center;
             position: relative;
         }
 
-        
         .content-wrapper {
             flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center; 
-            align-items: flex-start; 
+            justify-content: center;
+            align-items: flex-start;
             width: 100%;
             max-width: 900px;
             padding: 60px 40px;
@@ -141,21 +140,20 @@
 
         .title-section h3 {
             color: white;
-            text-decoration: underline;
             font-weight: 300;
             margin-bottom: 30px;
             font-style: italic;
         }
 
-       
-        .curriculum-card {
+        .curriculum {
             background-color: rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 1px 1px 3px 3px rgba(255, 174, 61, 0.112);
+            box-shadow: 1px 1px 3px 3px rgba(244, 160, 43, 0.152);
             border: 1px solid rgba(224, 180, 34, 0.3);
             border-radius: 15px;
             padding: 40px;
             width: 100%;
             color: white;
-            backdrop-filter: blur(5px);
         }
 
         .quarter-item {
@@ -175,13 +173,6 @@
 
         .subject-list {
             margin-left: 20px;
-            list-style-type: none;
-        }
-
-        .subject-list li::before {
-            content: "• ";
-            color: #e0b422;
-            font-weight: bold;
         }
 
         .subject-list li {
@@ -200,8 +191,13 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             letter-spacing: 1px;
         }
+
+        a {
+            text-decoration: none;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="container">
@@ -209,22 +205,23 @@
             <div class="sidebar-header">
                 <img src="https://raw.githubusercontent.com/mgvalera/Fairview_ICT9Jade_Q4Project_Group5/main/Hogwarts%20Logo.png" alt="Hogwarts Logo">
             </div>
+
             <nav>
                 <ul class="nav-links">
-                    <li class="active"><i class='bx bxs-dashboard'></i> Dashboard</li>
-                    <a href="notebooks.html"><li><i class='bx bxs-book-bookmark'></i> Notebooks</li></a>
-                    <li><i class='bx bx-list-check'></i> Tasks</li>
-                    <li><i class='bx bxs-user-badge'></i> Profile</li>
-                    <li><i class='bx bxs-log-out'></i> Logout</li>
+                    <a href="dashboard.html"><li class="active"> Dashboard</li></a>
+                    <a href="notebooks.html"><li> Notebooks</li></a>
+                    <a href="tasks.html"><li>Tasks</li></a>
+                    <a href="profile.html"><li>Profile</li></a>
+                    <a href="index.html"><li>Logout</li></a>
                 </ul>
             </nav>
         </aside>
 
         <main class="main-content">
             <div class="content-wrapper">
+
                 <header class="dashboard-header">
                     <div class="badge">Dashboard</div>
-                    <p style="color: white; margin-top: 10px; opacity: 0.6; font-size: 14px;">Quarter Work Plan</p>
                 </header>
 
                 <section class="title-section">
@@ -232,7 +229,8 @@
                     <h3>The Curriculum</h3>
                 </section>
 
-                <div class="curriculum-card">
+                <div class="curriculum">
+
                     <div class="quarter-item">
                         <span class="quarter-title">1st Quarter</span>
                         <ul class="subject-list">
@@ -245,7 +243,7 @@
                     <div class="quarter-item">
                         <span class="quarter-title">2nd Quarter</span>
                         <ul class="subject-list">
-                            <li>Transfiguration/li>
+                            <li>Transfiguration</li>
                             <li>Charm</li>
                             <li>Quarter Project: Lucky Charm</li>
                         </ul>
@@ -268,12 +266,15 @@
                             <li>Final Project: The Marauder's Map</li>
                         </ul>
                     </div>
+
                 </div>
+
             </div>
 
             <footer>
                 <p>David, Rioflorido, Valera, Valerio | Group 5, 9-Jade © 2026</p>
             </footer>
+
         </main>
     </div>
 

@@ -1,8 +1,10 @@
-<!-- Credits/Sources
-Urbanist Font: https://fonts.google.com/specimen/Urbanist?query=urbanist 
-BoxIcons: Icons obtained from Google ("https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css)
-BG Images: https://obmontessori.edu.ph/fairview
-Javascript from Sir Santos
+<!-- Credits & Sources (for all pages)
+Harry Potter Font: https://www.dafont.com/harry-p.font
+Urbanist Font: https://fonts.google.com/specimen/Urbanist?preview.script=Latn
+Hogwarts PNG: https://commons.wikimedia.org/wiki/File:Hogwarts-Crest.png
+Javascript of index.html: By Mr. Santos
+Webkit Shadows: https://html-css-js.com/css/generator/box-shadow/
+Profile Pic Code: Obtained from 3Q Skills Test
 -->
 
 <!DOCTYPE html>
@@ -10,14 +12,14 @@ Javascript from Sir Santos
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="icon" href="Hogwarts Logo.png" type="image/png">
 
-    <title>Q4 Project: Login</title>
+    <title>Hogwarts Login</title>
 
     <style>
-
         @font-face {
             font-family: 'HarryPotter';
             src: url(HPFont.TTF);
@@ -28,11 +30,10 @@ Javascript from Sir Santos
             font-family: 'Urbanist';
         }
 
-        /* ✅ FIXED BODY */
         body {
             min-height: 100vh;
             display: flex;
-            flex-direction: column; /* vertical layout */
+            flex-direction: column;
             margin: 0;
             background-image: url(BG1.png);
             background-size: cover;
@@ -45,7 +46,7 @@ Javascript from Sir Santos
             display: flex;
             justify-content: center;
             align-items: center;
-            flex: 1; 
+            flex: 1;
         }
 
         form {
@@ -53,7 +54,7 @@ Javascript from Sir Santos
             height: 520px;
             border-radius: 15px;
             background-color: rgba(0,0,0,0.55);
-            -webkit-box-shadow: 1px 1px 3px 3px rgba(255, 174, 61, 0.112); 
+            -webkit-box-shadow: 1px 1px 3px 3px rgba(255, 174, 61, 0.112);
             box-shadow: 1px 1px 3px 3px rgba(244, 160, 43, 0.152);
             color: white;
             display: flex;
@@ -65,6 +66,7 @@ Javascript from Sir Santos
         form:hover {
             transform: translateY(-4px);
         }
+
         .header {
             text-align: center;
             padding-top: 20px;
@@ -104,6 +106,7 @@ Javascript from Sir Santos
             box-shadow: 1px 1px 1px rgba(0,0,0,0.41);
             outline: none;
         }
+
         ::placeholder {
             color: rgba(255, 255, 255, 0.618);
         }
@@ -147,17 +150,16 @@ Javascript from Sir Santos
             cursor: not-allowed;
         }
 
-        /* ✅ NEW FOOTER */
         footer {
             width: 100%;
-            height: 45px;
-            background-color: rgba(0, 0, 0, 0.55);
-            font-size: 14px;
+            padding: 5px;
+            background-color: rgba(0, 0, 0, 0.95);
             color: white;
             text-align: center;
-            margin-top: auto; /* pushes to bottom */
+            font-size: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            letter-spacing: 1px;
         }
-
     </style>
 </head>
 
@@ -166,7 +168,7 @@ Javascript from Sir Santos
     <div class="container">
         <form>
             <div class="header">
-                <img src="Hogwarts Logo.png" alt="" id="logoimg">
+                <img src="Hogwarts Logo.png">
                 <h1>Welcome to Hogwarts!</h1>
                 <p>Step into the wizarding world! Enter your<br>credentials to begin your magical journey.</p>
             </div>
@@ -197,43 +199,41 @@ Javascript from Sir Santos
     </footer>
 
 <script>
-    // Javascript Format by Mr. Santos
-        let attempt_counter = 0;
+    let attempt_counter = 0;
 
-        function authenticate() {
+    function authenticate() {
 
-            let username = document.getElementById("username").value;
-            let password = document.getElementById("password").value;
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
 
-            if (username === "" || password === "") {
-                alert("No username and/or password. Please input something!");
-                return;
-            }
-
-            let granted = "Welcome " + username + "!";
-            let denied = "Access denied. Account locked after 3 attempts!";
-
-            do {
-                if (username === "HarryPotter" && password === "Dobby12") {
-                    alert(granted);
-                    attempt_counter = 0;
-                    document.getElementById("display").innerHTML = "";
-                    window.location.href = "dashboard.html";
-                    break;
-                } else {
-                    attempt_counter++;
-                    document.getElementById("display").innerHTML =
-                        "Incorrect username and/or password. Attempt " + attempt_counter + " of 3 ";
-                }
-
-            } while (false);
-
-            if (attempt_counter >= 3) {
-                alert(denied);
-                document.getElementById("loginBTN").disabled = true;
-            }
+        if (username === "" || password === "") {
+            alert("No username and/or password. Please input something!");
+            return;
         }
-    </script>
+
+        let granted = "Welcome " + username + "!";
+        let denied = "Access denied. Account locked after 3 attempts!";
+
+        do {
+            if (username === "HarryPotter" && password === "Dobby12") {
+                alert(granted);
+                attempt_counter = 0;
+                document.getElementById("display").innerHTML = "";
+                window.location.href = "dashboard.html";
+                break;
+            } else {
+                attempt_counter++;
+                document.getElementById("display").innerHTML =
+                    "Incorrect username and/or password. Attempt " + attempt_counter + " of 3 ";
+            }
+        } while (false);
+
+        if (attempt_counter >= 3) {
+            alert(denied);
+            document.getElementById("loginBTN").disabled = true;
+        }
+    }
+</script>
 
 </body>
 </html>
